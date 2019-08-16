@@ -16,6 +16,9 @@ Route::get('/test', [
     'uses' => 'TestController@test',
     'as' => 'test'
 ]);
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group([
 
