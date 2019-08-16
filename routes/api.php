@@ -34,4 +34,6 @@ Route::group([
 
     Route::post('save', 'AuthController@save');
     Route::post('category-info', 'CategoryController@fetchCategoryInfo');
+    Route::apiResource('brand', 'BrandController');
+
 });
