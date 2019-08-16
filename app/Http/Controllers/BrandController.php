@@ -11,8 +11,8 @@ class BrandController extends Controller
     public function index()
     {
         return response()->json([
-            'brands'=> Brand::all()
-        ],200);
+            'brands' => Brand::all()
+        ], 200);
     }
 
     /**
@@ -34,7 +34,7 @@ class BrandController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Brand  $brand
+     * @param  \App\Brand $brand
      * @return \Illuminate\Http\Response
      */
     public function show(Brand $brand)
@@ -45,7 +45,7 @@ class BrandController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Brand  $brand
+     * @param  \App\Brand $brand
      * @return \Illuminate\Http\Response
      */
     public function edit(Brand $brand)
@@ -56,23 +56,37 @@ class BrandController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Brand  $brand
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Brand $brand
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Brand $brand)
     {
-        //
+        $row = Brand::findOrFail($brand->id);
+        if (!is_null($row)) {
+            $row->name = $request->name;
+            $row->description = $request->description;
+            $row->update();
+        }
+        return response()->json(
+            ['message' => 'Data Editing Problem']
+        );
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Brand  $brand
+     * @param  \App\Brand $brand
      * @return \Illuminate\Http\Response
      */
     public function destroy(Brand $brand)
     {
-        //
+        $row = Brand::findOrFail($brand->id);
+        if (!is_null($row)) {
+            Brand::destroy($brand->id);
+        }
+        return response()->json(
+            ['message' => 'Data Deletion Problem']
+        );
     }
 }
