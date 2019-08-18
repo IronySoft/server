@@ -21,4 +21,19 @@ Route::group([
 
     Route::apiResource('brand', 'BrandController');
 
+
 });
+
+
+//Route::group([
+//
+////    'middleware' => 'api',
+//    'as' => 'api.'
+//
+//], function () {
+//
+    Route::resource('user', 'UserController');
+//
+//    Route::get('user/create', 'UserController@create')->name('user.create');
+//});
+

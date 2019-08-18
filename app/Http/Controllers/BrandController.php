@@ -73,12 +73,7 @@ class BrandController extends Controller
         );
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Brand $brand
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Brand $brand)
     {
         $row = Brand::findOrFail($brand->id);
